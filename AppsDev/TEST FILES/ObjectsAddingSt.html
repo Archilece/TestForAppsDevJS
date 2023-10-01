@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+</head>
+<body>
+    <h1>Student Management</h1>
+
+    <form id="studentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required><br>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <h2>Student List</h2>
+    <ul id="studentList">
+        <!-- Student details will be displayed here -->
+    </ul>
+
+    <script>
+        // Initialize an empty array to store students
+        let students = [];
+
+        // Get the form and student list elements
+        const studentForm = document.getElementById("studentForm");
+        const studentList = document.getElementById("studentList");
+
+        // Function to create a student object
+        let createStudent = function (name, age) {
+            return {
+                name: name,
+                age: age
+            };
+        };
+
+        // Function to add a student
+        function addStudent(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get values from the form
+            let name = document.getElementById("name").value;
+            let age = parseInt(document.getElementById("age").value);
+
+            // Create a student object
+            let student = createStudent(name, age);
+
+            // Add the student to the array
+            students.push(student);
+
+            // Display the student in the list
+            let listItem = document.createElement("li");
+            listItem.textContent = `Name: ${student.name}, Age: ${student.age}`;
+            studentList.appendChild(listItem);
+
+            // Clear the form
+            studentForm.reset();
+        }
+
+        // Add an event listener to the form
+        studentForm.addEventListener("submit", addStudent);
+    </script>
+</body>
+</html>

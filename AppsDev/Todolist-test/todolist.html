@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form style="padding: 5px;">
+        <label for="addItem">Add Item </label>
+        <input type="text" id="addItem">
+        <input type="button" value="Add Item" id="addItemBtn">
+    </form>
+    <button id="delBtn">Delete Item</button>
+    <button id="toggle">Hide / Show</button>
+
+    <ul id="todo-list">
+
+    </ul>
+</body>
+<script>
+    let addItem = document.getElementById("addItemBtn");
+    let todoList = document.getElementById("todo-list");
+    let deleteButton = document.getElementById("delBtn");
+    let toggleButton = document.getElementById("toggle");
+
+    addItem.addEventListener("click",() => {
+        let item = document.getElementById("addItem").value;
+        let list = document.createElement("li");
+        list.textContent = item;
+        todoList.appendChild(list);
+        document.getElementById("addItem").value = "";
+
+        
+                // Add a click event listener to select/deselect items
+            list.addEventListener("click", () => {
+                    list.classList.toggle("selected");
+                    console.log(item);
+            });
+    })
+
+    
+
+    deleteButton.addEventListener("click", () => {
+        // Find all selected items
+        let selectedItems = document.querySelectorAll(".selected");
+
+        // Remove each selected item from the list
+        selectedItems.forEach((item) => {
+            todoList.removeChild(item);
+        });
+    });
+
+    toggleButton.addEventListener("click", () => {
+    // Toggle the visibility of the todo list
+    if (todoList.style.display === "none") {
+        todoList.style.display = "block";
+    } else {
+        todoList.style.display = "none";
+    }
+    });
+</script>
+</html>

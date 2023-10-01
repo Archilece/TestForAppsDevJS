@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <table>
+            <th colspan="2" style="text-align: center;">Student Data Entry</th>
+            <tr>
+                <td>Student Number:</td>
+                <td> <input type="text" id="stdNo"></td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" id="fname"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" id="lname"></td>
+            </tr>
+            <tr>
+                <td>Program:</td>
+                <td><input type="text" id="program"></td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>
+                    <label for="year">
+                        <select name="year" id="year">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td><button id="submit">Add Entry</button></td>
+                <td><button id="Clear">Clear Display</button></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td id="CstdNo"></td>
+                <td id="DstdNo"></td>
+            </tr>
+            <tr>
+                <td id="Cfname"></td>
+                <td id="Dfname"></td>
+            </tr>
+            <tr>
+                <td id="Clname"></td>
+                <td id="Dlname"></td>
+            </tr>
+            <tr>
+                <td id="Cprogram"></td>
+                <td id="Dprogram"></td>
+            </tr>
+            <tr>
+                <td id="Cyear"></td>
+                <td id="Dyear"></td>
+            </tr>
+        </table>      
+    </div>
+
+    <script>
+        let submit = document.getElementById("submit");
+        let clear = document.getElementById("Clear");
+
+        submit.addEventListener("click",()=>{
+            let stdNo = document.getElementById("stdNo").value;
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+            let program = document.getElementById("program").value;
+            let year = document.getElementById("year").value;
+
+            let print = document.getElementById("print");
+
+            document.getElementById("CstdNo").innerHTML = "Student Number: ";
+            document.getElementById("DstdNo").innerHTML = stdNo;
+
+            document.getElementById("Cfname").innerHTML = "First Name: ";
+            document.getElementById("Dfname").innerHTML = fname;
+
+            document.getElementById("Clname").innerHTML = "Last Name: ";
+            document.getElementById("Dlname").innerHTML = lname;
+
+            document.getElementById("Cprogram").innerHTML = "Program: ";
+            document.getElementById("Dprogram").innerHTML = program;
+
+            document.getElementById("Cyear").innerHTML = "Year: ";
+            document.getElementById("Dyear").innerHTML = year;
+
+        });
+
+        clear.addEventListener("click",()=>{
+            location.reload()
+        });
+
+
+    </script>
+</body>
+</html>

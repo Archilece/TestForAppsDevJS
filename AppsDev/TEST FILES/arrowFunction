@@ -1,0 +1,37 @@
+// Traditional function expression
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(5, 3)); // Output: 8
+
+// Arrow function
+const subtract = (a, b) => a - b;
+
+console.log(subtract(8, 3)); // Output: 5
+
+// Arrow function with no parameters
+const greet = () => {
+    return "Hello, World!";
+};
+
+console.log(greet()); // Output: Hello, World!
+
+// Arrow function with a single parameter
+const square = (x) => x * x;
+
+console.log(square(4)); // Output: 16
+
+// Arrow function with multiple statements
+const multiply = (a, b) => {
+    let result = a * b;
+    return result;
+};
+
+console.log(multiply(2, 6)); // Output: 12
+
+// Arrow function as a callback
+const numbers = [1, 2, 3, 4, 5];
+const squaredNumbers = numbers.map((x) => x * x);
+
+console.log(squaredNumbers); // Output: [1, 4, 9, 16, 25]

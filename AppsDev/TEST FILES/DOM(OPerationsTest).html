@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Operations Example</title>
+</head>
+<body>
+    <h1>DOM Operations Example</h1>
+
+    <div id="content">
+        <p>Hello, <span id="name">Guest</span>!</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <button id="changeText">Change Text</button>
+    <button id="changeColor">Change Color</button>
+    <button id="addListItem">Add List Item</button>
+
+    <script>
+        // Get references to DOM elements
+        const nameSpan = document.getElementById("name");
+        const changeTextButton = document.getElementById("changeText");
+        const changeColorButton = document.getElementById("changeColor");
+        const addListItemButton = document.getElementById("addListItem");
+        const ulList = document.querySelector("ul");
+
+        // Event listener to change text
+        changeTextButton.addEventListener("click", function() {
+            nameSpan.textContent = "John";
+        });
+
+        // Event listener to change color
+        changeColorButton.addEventListener("click", function() {
+            nameSpan.style.color = "blue";
+        });
+
+        // Event listener to add a list item
+        addListItemButton.addEventListener("click", function() {
+            const li = document.createElement("li");
+            li.textContent = "New Item";
+            ulList.appendChild(li);
+        });
+    </script>
+</body>
+</html>

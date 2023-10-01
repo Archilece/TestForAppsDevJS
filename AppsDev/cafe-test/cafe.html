@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orders</title>
+    <script src="cafe.js"></script>
+</head>
+<body>
+    <div style="float: left;position: absolute;width: 200px;height: 120px;">
+        <div>
+            <h2>Cakes</h2>
+            <select name="cakeMenu" id="cakeMenu" onclick="splitMenu()">
+                <option value="Chocolate,70.00">Chocolate</option>
+                <option value="Vanilla,50.00">Vanilla</option>
+                <option value="Blueberry,90.00">Blueberry</option>
+            </select>
+        </div>
+        <div>
+            <h2>Coffee</h2>
+            <select name="coffeeMenu" id="coffeeMenu" onclick="" onchange="">
+                <option value="Blend">Blend</option>
+                <option value="Americano">Americano</option>
+                <option value="Latte">Latte</option>
+            </select>
+        </div>
+
+        
+    </div>
+
+    <div style="float: right;position: absolute;  right:70%;width: 200px;height: 120px;">
+            <table>
+                <h2>Orders</h2>
+                <tr>
+                    <td id="pname"></td>
+                    <td id="qty"><input type="text" id="quantity" onchange=""></td>
+                    <td id="price"></td>
+                    <td id="total"></td>    
+                </tr>
+            </table>
+    </div>
+</body>
+</html>

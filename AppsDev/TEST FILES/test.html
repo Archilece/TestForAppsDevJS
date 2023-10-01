@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake and Coffee Ordering System</title>
+</head>
+<body>
+    <h1>Cake and Coffee Ordering System</h1>
+
+    <div style="float: left;">
+        <h2>Menu</h2>
+        <select id="menu">
+            <option value="cake1">Cake 1</option>
+            <option value="cake2">Cake 2</option>
+            <option value="coffee1">Coffee 1</option>
+            <option value="coffee2">Coffee 2</option>
+        </select>
+    </div>
+
+    <div style="float: right;">
+        <h2>Order Summary</h2>
+        <table id="orderTable">
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Function to update the order summary
+        function updateOrderSummary(itemName, price, quantity) {
+            const table = document.getElementById('orderTable');
+            const newRow = table.insertRow(-1);
+
+            const itemCell = newRow.insertCell(0);
+            itemCell.textContent = itemName;
+
+            const priceCell = newRow.insertCell(1);
+            priceCell.textContent = price.toFixed(2); // Display price with two decimal places
+
+            const quantityCell = newRow.insertCell(2);
+            quantityCell.textContent = quantity;
+
+            const amountCell = newRow.insertCell(3);
+            amountCell.textContent = (price * quantity).toFixed(2); // Display total amount with two decimal places
+        }
+
+        // Event listener for menu item selection
+        const menu = document.getElementById('menu');
+        menu.addEventListener('change', function() {
+            const itemName = menu.options[menu.selectedIndex].text;
+            const price = 2.99; // You can set the actual prices here
+            const quantity = 1; // Default quantity
+
+            updateOrderSummary(itemName, price, quantity);
+            
+            // Reset the dropdown selection to the default option
+            menu.selectedIndex = 0;
+        });
+    </script>
+</body>
+</html>

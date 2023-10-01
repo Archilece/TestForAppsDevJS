@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+<h2>The split() Method</h2>
+
+<p>split() splits a string into an array of substrings, and returns the array.</p>
+
+<select name="coffeeMenu" id="coffeeMenu" onchange="updateDemo()">
+    <option value="Blend,10.00">Blend</option>
+    <option value="Americano,20.00">Americano</option>
+    <option value="Latte,30.00">Latte</option>
+</select>
+
+<p id="demo"></p>
+
+<script>
+function updateDemo() {
+    // Get the selected <select> element
+    let select = document.getElementById("coffeeMenu");
+
+    // Get the selected option's value
+    let selectedOption = select.options[select.selectedIndex].value;
+
+    // Split the selected option's value by ","
+    const myArray = selectedOption.split(",");
+
+    // Display the result in the <p> element
+    document.getElementById("demo").innerHTML = myArray;
+}
+
+// Call the updateDemo function initially to set the default value
+updateDemo();
+</script>
+
+</body>
+</html>

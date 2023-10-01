@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    ul {
+            list-style-type: none;
+            padding: 5px;
+            width: fit-content;
+            margin: 10px;
+            font-size: large;
+    }
+    .selected {
+        background-color: lightgray;
+        color: black; 
+    }
+    </style>
+    <h1>TODO LIST</h1>
+    <form style="padding: 5px;">
+        <label for="addItem">Add Item </label>
+        <input type="text" id="addItem">
+        <input type="button" value="Add Item" id="addItemBtn">
+    </form>
+    <button id="delBtn">Delete Item</button>
+    <button id="toggle">Hide / Show</button>
+
+    <ul id="todo-list">
+
+    </ul>
+</body>
+<script src="todolist.js"></script>
+</html>

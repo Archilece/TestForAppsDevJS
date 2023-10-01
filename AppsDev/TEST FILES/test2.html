@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake and Coffee Ordering System</title>
+</head>
+<body>
+    <h1>Cake and Coffee Ordering System</h1>
+
+    <div style="float: left;">
+        <h2>Cake Menu</h2>
+        <select id="cakeMenu" multiple>
+            <option value="cake1">Cake 1</option>
+            <option value="cake2">Cake 2</option>
+        </select>
+    </div>
+
+    <div style="float: left; margin-left: 20px;">
+        <h2>Coffee Menu</h2>
+        <select id="coffeeMenu" multiple>
+            <option value="coffee1">Coffee 1</option>
+            <option value="coffee2">Coffee 2</option>
+        </select>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <div style="float: right;">
+        <h2>Order Summary</h2>
+        <table id="orderTable">
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </table>
+        <div id="total">Total: $0.00</div>
+    </div>
+
+    <script>
+        // Prices for each item
+        const itemPrices = {
+            cake1: 90.00,
+            cake2: 30.00,
+            coffee1: 20.00,
+            coffee2: 50.00
+        };
+
+        // Function to update the order summary
+        function updateOrderSummary(itemName, price, quantity) {
+            const table = document.getElementById('orderTable');
+            const newRow = table.insertRow(-1);
+
+            const itemCell = newRow.insertCell(0);
+            itemCell.textContent = itemName;
+
+            const priceCell = newRow.insertCell(1);
+            priceCell.textContent = price.toFixed(2); // Display price with two decimal places
+
+            const quantityCell = newRow.insertCell(2);
+            const quantityInput = document.createElement('input');
+            quantityInput.type = 'number';
+            quantityInput.value = quantity;
+            quantityInput.min = 1;
+            quantityInput.addEventListener('change', function() {
+                updateAmount(this, newRow, price);
+                updateTotal();
+            });
+            quantityCell.appendChild(quantityInput);
+
+            const amountCell = newRow.insertCell(3);
+            amountCell.textContent = (price * quantity).toFixed(2); // Display total amount with two decimal places
+
+            const actionCell = newRow.insertCell(4);
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove Item';
+            removeButton.addEventListener('click', function() {
+                table.deleteRow(newRow.rowIndex);
+                updateTotal();
+            });
+            actionCell.appendChild(removeButton);
+            
+            updateTotal();
+        }
+
+        // Function to update the amount when quantity changes
+        function updateAmount(input, row, price) {
+            const quantity = parseInt(input.value);
+            const amountCell = row.cells[3];
+            amountCell.textContent = (price * quantity).toFixed(2);
+        }
+
+        // Function to update the total amount
+        function updateTotal() {
+            const table = document.getElementById('orderTable');
+            const rows = table.getElementsByTagName('tr');
+            let totalAmount = 0;
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const amountCell = row.cells[3];
+                totalAmount += parseFloat(amountCell.textContent);
+            }
+
+            const totalDiv = document.getElementById('total');
+            totalDiv.textContent = `Total: $${totalAmount.toFixed(2)}`;
+        }
+
+        // Event listener for cake menu item selection
+        const cakeMenu = document.getElementById('cakeMenu');
+        cakeMenu.addEventListener('change', function() {
+            const selectedOptions = Array.from(cakeMenu.selectedOptions);
+
+            selectedOptions.forEach(function(option) {
+                const itemName = option.text;
+                const price = itemPrices[option.value] || 0; // Get the price from the itemPrices object
+                const quantity = 1; // Default quantity
+
+                updateOrderSummary(itemName, price, quantity);
+            });
+
+            // Clear the selected options after adding to the order
+            selectedOptions.forEach(function(option) {
+                option.selected = false;
+            });
+        });
+
+        // Event listener for coffee menu item selection
+        const coffeeMenu = document.getElementById('coffeeMenu');
+        coffeeMenu.addEventListener('change', function() {
+            const selectedOptions = Array.from(coffeeMenu.selectedOptions);
+
+            selectedOptions.forEach(function(option) {
+                const itemName = option.text;
+                const price = itemPrices[option.value] || 0; // Get the price from the itemPrices object
+                const quantity = 1; // Default quantity
+
+                updateOrderSummary(itemName, price, quantity);
+            });
+
+            // Clear the selected options after adding to the order
+            selectedOptions.forEach(function(option) {
+                option.selected = false;
+            });
+        });
+    </script>
+</body>
+</html>
